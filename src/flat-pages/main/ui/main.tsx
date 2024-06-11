@@ -14,7 +14,7 @@ const fetchWeatherData = async (pageNo : number) => {
 export const MainPage = async () => {
 
   revalidatePath('/');
-  const data = await fetchWeatherData(361);
+  const data = await fetchWeatherData(1);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
