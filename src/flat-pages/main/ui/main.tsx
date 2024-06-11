@@ -11,27 +11,15 @@ const fetchWeatherData = async (pageNo : number) => {
   return response.json();
 };
 
-
 export const MainPage = async () => {
 
   revalidatePath('/');
-  const data1 = await fetchWeatherData(1); 
-  const data2 = await fetchWeatherData(61);
-  const data3 = await fetchWeatherData(121);
-  const data4 = await fetchWeatherData(181);
-  const data5 = await fetchWeatherData(241);
-  const data6 = await fetchWeatherData(301);
-  const data7 = await fetchWeatherData(361);
-  const data8 = await fetchWeatherData(421);
+  const data = await fetchWeatherData(361);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-row space-x-4">
-        <Display data={data1} />
-        <Display data={data2} />
-        <Display data={data3} />
-        <Display data={data4} />
-        <Display data={data5} />
+        <Display data={data} />
       </div>
     </div>
   );

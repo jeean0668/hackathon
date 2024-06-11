@@ -10,7 +10,7 @@ interface Props {
 }
 
 const toRadians = (degree: number) => degree * (Math.PI / 180);
-const toDegrees = (radians: number) => radians * (180 / Math.PI);
+const toDegrees = (radians: number) => radians * (360 / Math.PI);
 
 const CanvasComponent: React.FC<Props> = ({ windDir, lineLength, onAngleCalculated }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
