@@ -1,26 +1,35 @@
-"use server";
+"use client";
 
-import { revalidatePath } from 'next/cache';
-import Display from './display';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Display from '@/flat-pages/main/ui/display';
+import { fetchWeatherData, WeatherData } from './fetch';
 
-const fetchWeatherData = async (pageNo : number) => {
-  const response = await fetch(`http://43.202.3.44:8080/data/v1/wind?pageNo=${pageNo}&numOfRows=1`); // 여기에 실제 API URL을 넣으세요.
-  if (!response.ok) {
-    throw new Error('Failed to fetch weather data');
-  }
-  return response.json();
-};
+export function MainPage() {
+  const searchParams = useSearchParams();
+  const pageNum = searchParams.get('pageNum');
+  const [data, setData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-export const MainPage = async () => {
-
-  revalidatePath('/');
-  const data = await fetchWeatherData(1);
+  useEffect(() => {
+    if (pageNum) {
+      fetchWeatherData(pageNum)
+        .then((result) => setData(result))
+        .catch((error) => setError(error.message));
+    }
+  }, [pageNum]);
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="flex flex-row space-x-4">
-        <Display data={data} />
-      </div>
+      {error ? (
+        <p>{error}</p>
+      ) : data ? (
+        <div className="flex flex-row space-x-4">
+          <Display data={data} />
+        </div>
+      ) : (
+        <p>데이터를 불러오는 중...</p>
+      )}
     </div>
   );
-};
+}

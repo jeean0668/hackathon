@@ -2,6 +2,7 @@
 
 import CanvasComponent from './CanvasComponent';
 import { useWindAngle } from './useWindAngle';
+import { WeatherData } from './fetch';
 
 interface DisplayProps {
   data: {
