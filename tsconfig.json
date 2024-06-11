@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["tailwindcss"],
+    "types": ["tailwindcss", "node"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
