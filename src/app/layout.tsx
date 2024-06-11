@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import localFont from "next/font/local"
+import './globals.css';
 
 const pretendard = localFont({
   src: "../font/PretendardVariable.woff2",
