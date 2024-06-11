@@ -61,7 +61,7 @@ export function Home() {
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
-                보고 싶은 시간을 입력해 주세요.
+                ex) 5분 전 데이터 : "5" 입력 
               </FormDescription>
               <FormMessage />
             </FormItem>
